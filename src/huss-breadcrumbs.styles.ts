@@ -7,7 +7,7 @@ export const breadcrumbsStyles = css`
     --hover: goldenrod;
   }
 
-  .huss-breadcrumb__list {
+  .huss-breadcrumbs__list {
     color: var(--linkColour);
     display: inline-flex;
     flex-wrap: nowrap;
@@ -45,6 +45,10 @@ export const breadcrumbsStyles = css`
     display: flex;
     align-items: center;
   }
+  .huss-breadcrumb__list-item:after {
+    content: '>';
+    width: 9px;
+  }
 
   .huss-breadcrumb__list-item:first-child a {
     padding-inline-end: 8px;
@@ -54,15 +58,7 @@ export const breadcrumbsStyles = css`
     --linkColour: var(--activeBreadcrumbColour);
   }
 
-  .huss-breadcrumb__list-item:after {
-    content: '>';
-    width: 9px;
-    display: inline-block;
-  }
-
-  .huss-breadcrumb__list-item:not(:first-child):not(:last-child):not(
-      :nth-last-child(2)
-    ):after {
+  .huss-breadcrumb__list-item:last-child:after {
     display: none;
   }
 
@@ -72,30 +68,37 @@ export const breadcrumbsStyles = css`
     :where(a) {
     display: none;
   }
-
   @media (width >= 48rem) {
-    .huss-breadcrumb__list-item:not(:first-child):not(:last-child):not(
-        :nth-last-child(2)
-      ):after {
-      content: '>';
-      width: 9px;
-      display: inline-block;
-    }
-
     .huss-breadcrumb__list-item:not(:first-child):not(:last-child):not(
         :nth-last-child(2)
       )
       :where(a) {
       display: inline-block;
     }
+  }
 
-    .huss-breadcrumb__list-item:nth-child(2):not(:last-child) a {
+  .huss-breadcrumb__list-item:not(:first-child):not(:last-child):not(
+      :nth-last-child(2)
+    ):after {
+    display: none;
+  }
+
+  @media (width >= 48rem) {
+    .huss-breadcrumb__list-item:not(:first-child):not(:last-child):not(
+        :nth-last-child(2)
+      ):after {
       display: inline-block;
     }
   }
 
   .huss-breadcrumb__list-item:nth-child(2):not(:last-child) a {
     display: none;
+  }
+
+  @media (width >= 48rem) {
+    .huss-breadcrumb__list-item:nth-child(2):not(:last-child) a {
+      display: inline-block;
+    }
   }
 
   .huss-breadcrumb__list-item:nth-child(2):not(:last-child)::before {
@@ -119,10 +122,9 @@ export const breadcrumbsStyles = css`
   .huss-breadcrumb__list-item:not(:first-child):not(:last-child):not(
       :nth-last-child(2)
     )
-    :where(a, huss-icon) {
+    :where(a) {
     display: none;
   }
-
   @media (width >= 48rem) {
     .huss-breadcrumb__list-item:not(:first-child):not(:last-child):not(
         :nth-last-child(2)
@@ -130,7 +132,15 @@ export const breadcrumbsStyles = css`
       :where(a) {
       display: inline-block;
     }
+  }
 
+  .huss-breadcrumb__list-item:not(:first-child):not(:last-child):not(
+      :nth-last-child(2)
+    ):after {
+    display: none;
+  }
+
+  @media (width >= 48rem) {
     .huss-breadcrumb__list-item:not(:first-child):not(:last-child):not(
         :nth-last-child(2)
       ):after {
@@ -139,25 +149,33 @@ export const breadcrumbsStyles = css`
   }
 
   @media (width >= 48rem) {
-    .huss-breadcrumbs--is-folded
-      .huss-breadcrumb__list-item:not(:first-child):not(:last-child):not(
+    .conti-air-breadcrumbs--is-folded
+      .conti-air-breadcrumb__list-item:not(:first-child):not(:last-child):not(
         :nth-last-child(3)
       ):not(:nth-last-child(2))
-      :where(a, huss-icon) {
+      :where(a) {
       display: none;
     }
 
-    .huss-breadcrumbs--is-folded
-      .huss-breadcrumb__list-item:nth-child(2):not(:last-child)
-      a {
+    .conti-air-breadcrumbs--is-folded
+      .conti-air-breadcrumb__list-item:not(:first-child):not(:last-child):not(
+        :nth-last-child(3)
+      ):not(:nth-last-child(2))
+      :after {
       display: none;
-      @media (width >= 48rem) {
-        display: inline-block;
-      }
     }
 
-    .huss-breadcrumbs--is-folded
-      .huss-breadcrumb__list-item:nth-child(2):not(:last-child)::before {
+    .conti-air-breadcrumbs--is-folded
+      .conti-air-breadcrumb__list-item:nth-child(2):not(:last-child)
+      .conti-air-breadcrumb__link {
+      display: none;
+      // @media (width >= 48rem) {
+      //   display: inline-block;
+      // }
+    }
+
+    .conti-air-breadcrumbs--is-folded
+      .conti-air-breadcrumb__list-item:nth-child(2):not(:last-child)::before {
       content: '...';
       display: inline-block;
       padding-inline: 10px;

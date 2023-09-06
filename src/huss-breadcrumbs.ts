@@ -54,14 +54,16 @@ export class HussBreadcrumbs extends LitElement {
 
   override render() {
     return html`
-      <ul class="huss-breadcrumb__list">
+    <div class='conti-air-breadcrumbs--is-folded>
+
+      <ul class="huss-breadcrumbs__list">
         ${this._breadcrumbs.map(
           (breadcrumb: HTMLElement) =>
             html`<li class="huss-breadcrumb__list-item">${breadcrumb}</li>`
         )}
       </ul>
       <slot name="breadcrumbs"></slot>
-    `;
+    </div>`;
   }
 
   /**
