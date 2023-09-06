@@ -9,6 +9,7 @@ import {
   customElement,
   property,
   queryAssignedElements,
+  state,
 } from 'lit/decorators.js';
 import {breadcrumbsStyles} from './huss-breadcrumbs.styles';
 
@@ -26,11 +27,13 @@ export class HussBreadcrumbs extends LitElement {
   @queryAssignedElements({slot: 'breadcrumbs', selector: 'a'})
   _breadcrumbs: Array<HTMLElement>;
 
+  @queryAssignedElements({slot: 'icon', selector: 'p'})
+  _icon: Array<HTMLElement>;
   /**
    * The name to say "Hello" to.
    */
-  @property()
-  name = 'World';
+  @state()
+  icon: any = null;
 
   /**
    * The number of times the button has been clicked.
@@ -44,6 +47,9 @@ export class HussBreadcrumbs extends LitElement {
     if (this._breadcrumbs.length) {
       this.requestUpdate();
     }
+    if (this._icon.length) {
+      this.icon = this._icon[0];
+    }
   }
 
   override render() {
@@ -56,11 +62,6 @@ export class HussBreadcrumbs extends LitElement {
       </ul>
       <slot name="breadcrumbs"></slot>
     `;
-  }
-
-  private _onClick() {
-    this.count++;
-    this.dispatchEvent(new CustomEvent('count-changed'));
   }
 
   /**

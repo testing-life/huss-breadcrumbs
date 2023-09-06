@@ -1,8 +1,12 @@
 import { css } from 'lit';
 export const breadcrumbsStyles = css `
+  :host {
+    --linkColour: pink;
+    --activeBreadcrumbColour: green;
+    --hover: goldenrod;
+  }
+
   .huss-breadcrumb__list {
-    --linkColour: var(--grey3);
-    --activeBreadcrumbColour: var(--activeBreadcrumbTheme, var(--black));
     color: var(--linkColour);
     display: inline-flex;
     flex-wrap: nowrap;
@@ -13,7 +17,7 @@ export const breadcrumbsStyles = css `
     margin: 0;
   }
 
-  .huss-breadcrumb__link {
+  a {
     color: var(--linkColour);
     text-decoration: none;
     padding-inline: 8px;
@@ -24,14 +28,14 @@ export const breadcrumbsStyles = css `
     white-space: nowrap;
   }
 
-  .huss-breadcrumb__link:hover:is(a),
-  .huss-breadcrumb__link:focus:is(a) {
-    color: var(--primaryDark);
+  a:hover:is(a),
+  a:focus:is(a) {
+    color: var(--hover);
     cursor: pointer;
   }
 
   @media (width >= 48rem) {
-    .huss-breadcrumb__link {
+    a {
       max-width: 170px;
     }
   }
@@ -41,11 +45,7 @@ export const breadcrumbsStyles = css `
     align-items: center;
   }
 
-  .huss-breadcrumb__list-item huss-icon {
-    width: 9px;
-  }
-
-  .huss-breadcrumb__list-item:first-child .huss-breadcrumb__link {
+  .huss-breadcrumb__list-item:first-child a {
     padding-inline-end: 8px;
   }
 
@@ -53,54 +53,72 @@ export const breadcrumbsStyles = css `
     --linkColour: var(--activeBreadcrumbColour);
   }
 
-  .huss-breadcrumb__list-item huss-icon {
+  .huss-breadcrumb__list-item:after {
+    content: '>';
+    width: 9px;
+    display: inline-block;
+  }
+
+  .huss-breadcrumb__list-item:not(:first-child):not(:last-child):not(
+      :nth-last-child(2)
+    ):after {
     display: none;
   }
 
   .huss-breadcrumb__list-item:not(:first-child):not(:last-child):not(
       :nth-last-child(2)
     )
-    :where(.huss-breadcrumb__link, huss-icon) {
+    :where(a) {
     display: none;
   }
 
   @media (width >= 48rem) {
     .huss-breadcrumb__list-item:not(:first-child):not(:last-child):not(
         :nth-last-child(2)
+      ):after {
+      content: '>';
+      width: 9px;
+      display: inline-block;
+    }
+
+    .huss-breadcrumb__list-item:not(:first-child):not(:last-child):not(
+        :nth-last-child(2)
       )
-      :where(.huss-breadcrumb__link, huss-icon) {
+      :where(a) {
+      display: inline-block;
+    }
+
+    .huss-breadcrumb__list-item:nth-child(2):not(:last-child) a {
       display: inline-block;
     }
   }
 
-  .huss-breadcrumb__list-item:nth-child(2):not(:last-child)
-    .huss-breadcrumb__link {
+  .huss-breadcrumb__list-item:nth-child(2):not(:last-child) a {
     display: none;
-    @media (width >= 48rem) {
-      display: inline-block;
-    }
   }
 
   .huss-breadcrumb__list-item:nth-child(2):not(:last-child)::before {
     content: '...';
     display: inline-block;
     padding-inline: 10px;
-    @media (width >= 48rem) {
+  }
+
+  @media (width >= 48rem) {
+    .huss-breadcrumb__list-item:nth-child(2):not(:last-child)::before {
       display: none;
     }
   }
 
   .huss-breadcrumb__list-item:nth-child(2):not(
       :last-child
-    ).huss-breadcrumb__list-item:nth-child(2):not(:last-child)
-    huss-icon {
+    ).huss-breadcrumb__list-item:nth-child(2):not(:last-child):after {
     display: inline-block;
   }
 
   .huss-breadcrumb__list-item:not(:first-child):not(:last-child):not(
       :nth-last-child(2)
     )
-    :where(.huss-breadcrumb__link, huss-icon) {
+    :where(a, huss-icon) {
     display: none;
   }
 
@@ -108,7 +126,13 @@ export const breadcrumbsStyles = css `
     .huss-breadcrumb__list-item:not(:first-child):not(:last-child):not(
         :nth-last-child(2)
       )
-      :where(.huss-breadcrumb__link, huss-icon) {
+      :where(a) {
+      display: inline-block;
+    }
+
+    .huss-breadcrumb__list-item:not(:first-child):not(:last-child):not(
+        :nth-last-child(2)
+      ):after {
       display: inline-block;
     }
   }
@@ -118,13 +142,13 @@ export const breadcrumbsStyles = css `
       .huss-breadcrumb__list-item:not(:first-child):not(:last-child):not(
         :nth-last-child(3)
       ):not(:nth-last-child(2))
-      :where(.huss-breadcrumb__link, huss-icon) {
+      :where(a, huss-icon) {
       display: none;
     }
 
     .huss-breadcrumbs--is-folded
       .huss-breadcrumb__list-item:nth-child(2):not(:last-child)
-      .huss-breadcrumb__link {
+      a {
       display: none;
       @media (width >= 48rem) {
         display: inline-block;
