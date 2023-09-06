@@ -4,7 +4,7 @@
  * SPDX-License-Identifier: BSD-3-Clause
  */
 
-import {MyElement} from '../huss-breadcrumbs.js';
+import {HussBreadcrumbs} from '../huss-breadcrumbs.js';
 
 import {fixture, assert} from '@open-wc/testing';
 import {html} from 'lit/static-html.js';
@@ -12,7 +12,7 @@ import {html} from 'lit/static-html.js';
 suite('huss-breadcrumbs', () => {
   test('is defined', () => {
     const el = document.createElement('huss-breadcrumbs');
-    assert.instanceOf(el, MyElement);
+    assert.instanceOf(el, HussBreadcrumbs);
   });
 
   test('renders with default values', async () => {
@@ -44,7 +44,7 @@ suite('huss-breadcrumbs', () => {
   test('handles a click', async () => {
     const el = (await fixture(
       html`<huss-breadcrumbs></huss-breadcrumbs>`
-    )) as MyElement;
+    )) as HussBreadcrumbs;
     const button = el.shadowRoot!.querySelector('button')!;
     button.click();
     await el.updateComplete;
@@ -61,7 +61,7 @@ suite('huss-breadcrumbs', () => {
   test('styling applied', async () => {
     const el = (await fixture(
       html`<huss-breadcrumbs></huss-breadcrumbs>`
-    )) as MyElement;
+    )) as HussBreadcrumbs;
     await el.updateComplete;
     assert.equal(getComputedStyle(el).paddingTop, '16px');
   });

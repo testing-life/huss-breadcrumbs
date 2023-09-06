@@ -4,8 +4,13 @@
  * SPDX-License-Identifier: BSD-3-Clause
  */
 
-import {LitElement, html, css} from 'lit';
-import {customElement, property} from 'lit/decorators.js';
+import {LitElement, PropertyValueMap, html} from 'lit';
+import {
+  customElement,
+  property,
+  queryAssignedElements,
+} from 'lit/decorators.js';
+import {breadcrumbsStyles} from './huss-breadcrumbs.styles';
 
 /**
  * An example element.
@@ -15,15 +20,11 @@ import {customElement, property} from 'lit/decorators.js';
  * @csspart button - The button
  */
 @customElement('huss-breadcrumbs')
-export class MyElement extends LitElement {
-  static override styles = css`
-    :host {
-      display: block;
-      border: solid 1px gray;
-      padding: 16px;
-      max-width: 800px;
-    }
-  `;
+export class HussBreadcrumbs extends LitElement {
+  static override styles = [breadcrumbsStyles];
+
+  @queryAssignedElements({slot: 'breadcrumbs', selector: 'a'})
+  _breadcrumbs: Array<HTMLElement>;
 
   /**
    * The name to say "Hello" to.
@@ -37,13 +38,23 @@ export class MyElement extends LitElement {
   @property({type: Number})
   count = 0;
 
+  protected override firstUpdated(
+    _changedProperties: PropertyValueMap<any> | Map<PropertyKey, unknown>
+  ): void {
+    if (this._breadcrumbs.length) {
+      this.requestUpdate();
+    }
+  }
+
   override render() {
     return html`
-      <h1>${this.sayHello(this.name)}!</h1>
-      <button @click=${this._onClick} part="button">
-        Click Count: ${this.count}
-      </button>
-      <slot></slot>
+      <ul class="huss-breadcrumb__list">
+        ${this._breadcrumbs.map(
+          (breadcrumb: HTMLElement) =>
+            html`<li class="huss-breadcrumb__list-item">${breadcrumb}</li>`
+        )}
+      </ul>
+      <slot name="breadcrumbs"></slot>
     `;
   }
 
@@ -63,6 +74,6 @@ export class MyElement extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'huss-breadcrumbs': MyElement;
+    'huss-breadcrumbs': HussBreadcrumbs;
   }
 }
