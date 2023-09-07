@@ -54,26 +54,17 @@ export class HussBreadcrumbs extends LitElement {
 
   override render() {
     return html`
-    <div class='conti-air-breadcrumbs--is-folded>
-
       <ul class="huss-breadcrumbs__list">
         ${this._breadcrumbs.map(
-          (breadcrumb: HTMLElement) =>
-            html`<li class="huss-breadcrumb__list-item">${breadcrumb}</li>`
+          (breadcrumb: HTMLElement, index: number) =>
+            html`<li class="huss-breadcrumb__list-item ${this._breadcrumbs.length === index+1 ? '--is-disabled':null}">
+              ${breadcrumb}
+            </li>`
         )}
       </ul>
       <slot name="breadcrumbs"></slot>
-    </div>`;
+    `;
   }
-
-  /**
-   * Formats a greeting
-   * @param name The name to say "Hello" to
-   */
-  sayHello(name: string): string {
-    return `Hello, ${name}`;
-  }
-}
 
 declare global {
   interface HTMLElementTagNameMap {

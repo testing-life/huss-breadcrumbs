@@ -28,8 +28,8 @@ export const breadcrumbsStyles = css `
     white-space: nowrap;
   }
 
-  a:hover:is(a),
-  a:focus:is(a) {
+  a:hover,
+  a:focus {
     color: var(--hover);
     cursor: pointer;
   }
@@ -145,6 +145,15 @@ export const breadcrumbsStyles = css `
       ):after {
       display: inline-block;
     }
+  }
+
+  .--is-disabled > a {
+    pointer-events: none;
+  }
+
+  .--is-disabled > a:hover {
+    cursor: default;
+    color: var(--linkColour);
   }
 
   @media (width >= 48rem) {
