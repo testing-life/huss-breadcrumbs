@@ -1,7 +1,7 @@
 import { css } from 'lit';
 export const breadcrumbsStyles = css `
   :host {
-    --linkColour: pink;
+    --linkColour: blue;
     --activeBreadcrumbColour: green;
     --hover: goldenrod;
   }
@@ -67,13 +67,8 @@ export const breadcrumbsStyles = css `
     :where(a) {
     display: none;
   }
+
   @media (width >= 48rem) {
-    .huss-breadcrumb__list-item:not(:first-child):not(:last-child):not(
-        :nth-last-child(2)
-      )
-      :where(a) {
-      display: inline-block;
-    }
   }
 
   .huss-breadcrumb__list-item:not(:first-child):not(:last-child):not(
@@ -144,6 +139,7 @@ export const breadcrumbsStyles = css `
         :nth-last-child(2)
       ):after {
       display: inline-block;
+      outline: 1px solid red;
     }
   }
 
@@ -156,38 +152,36 @@ export const breadcrumbsStyles = css `
     color: var(--linkColour);
   }
 
-  @media (width >= 48rem) {
-    .conti-air-breadcrumbs--is-folded
-      .conti-air-breadcrumb__list-item:not(:first-child):not(:last-child):not(
-        :nth-last-child(3)
-      ):not(:nth-last-child(2))
-      :where(a) {
-      display: none;
-    }
-
-    .conti-air-breadcrumbs--is-folded
-      .conti-air-breadcrumb__list-item:not(:first-child):not(:last-child):not(
-        :nth-last-child(3)
-      ):not(:nth-last-child(2))
-      :after {
-      display: none;
-    }
-
-    .conti-air-breadcrumbs--is-folded
-      .conti-air-breadcrumb__list-item:nth-child(2):not(:last-child)
-      .conti-air-breadcrumb__link {
-      display: none;
-      // @media (width >= 48rem) {
-      //   display: inline-block;
-      // }
-    }
-
-    .conti-air-breadcrumbs--is-folded
-      .conti-air-breadcrumb__list-item:nth-child(2):not(:last-child)::before {
-      content: '...';
-      display: inline-block;
-      padding-inline: 10px;
-    }
+  // @media (width >= 48rem) {
+  .--is-folded
+    .huss-breadcrumb__list-item:not(:first-child):not(:last-child):not(
+      :nth-last-child(3)
+    ):not(:nth-last-child(2))
+    :where(a) {
+    display: none;
   }
+
+  .--is-folded
+    .huss-breadcrumb__list-item:not(:first-child):not(:last-child):not(
+      :nth-last-child(3)
+    ):not(:nth-last-child(2))
+    :after {
+    display: none;
+    outline: 1px solid green !important;
+  }
+
+  .--is-folded
+    .huss-breadcrumb__list-item:nth-child(2):not(:last-child)
+    .huss-breadcrumb__link {
+    display: none;
+  }
+
+  .--is-folded
+    .huss-breadcrumb__list-item:nth-child(2):not(:last-child)::before {
+    content: '...';
+    display: inline-block;
+    padding-inline: 10px;
+  }
+  // }
 `;
 //# sourceMappingURL=huss-breadcrumbs.styles.js.map

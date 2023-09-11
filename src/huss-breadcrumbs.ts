@@ -54,10 +54,19 @@ export class HussBreadcrumbs extends LitElement {
 
   override render() {
     return html`
-      <ul class="huss-breadcrumbs__list">
+      <ul
+        class="huss-breadcrumbs__list ${this._breadcrumbs.length > 5
+          ? '--is-folded'
+          : ''}"
+      >
         ${this._breadcrumbs.map(
           (breadcrumb: HTMLElement, index: number) =>
-            html`<li class="huss-breadcrumb__list-item ${this._breadcrumbs.length === index+1 ? '--is-disabled':null}">
+            html`<li
+              class="huss-breadcrumb__list-item ${this._breadcrumbs.length ===
+              index + 1
+                ? '--is-disabled'
+                : null}"
+            >
               ${breadcrumb}
             </li>`
         )}
@@ -65,7 +74,7 @@ export class HussBreadcrumbs extends LitElement {
       <slot name="breadcrumbs"></slot>
     `;
   }
-
+}
 declare global {
   interface HTMLElementTagNameMap {
     'huss-breadcrumbs': HussBreadcrumbs;
