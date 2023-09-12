@@ -4,12 +4,11 @@
  * SPDX-License-Identifier: BSD-3-Clause
  */
 
-import {LitElement, PropertyValueMap, html} from 'lit';
+import {LitElement, html} from 'lit';
 import {
   customElement,
   property,
   queryAssignedElements,
-  state,
 } from 'lit/decorators.js';
 import {breadcrumbsStyles} from './huss-breadcrumbs.styles';
 
@@ -29,11 +28,6 @@ export class HussBreadcrumbs extends LitElement {
 
   @property({type: Number})
   collapseAfter: number;
-  /**
-   * The number of times the button has been clicked.
-   */
-  @property({type: Number})
-  count = 0;
 
   protected override firstUpdated(): void {
     if (this._breadcrumbs.length) {

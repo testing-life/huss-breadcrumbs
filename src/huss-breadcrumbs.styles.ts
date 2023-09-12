@@ -2,7 +2,7 @@ import {css} from 'lit';
 
 export const breadcrumbsStyles = css`
   :host {
-    --linkMaxWidthMobile: 7px;
+    --linkMaxWidthMobile: 72px;
     --linkMaxWidthDesktop: 170px;
   }
 
@@ -16,7 +16,7 @@ export const breadcrumbsStyles = css`
     margin: 0;
   }
 
-  .huss-breadcrumb__link {
+  a {
     text-decoration: none;
     padding-inline: 8px;
     display: inline-block;
@@ -26,13 +26,13 @@ export const breadcrumbsStyles = css`
     white-space: nowrap;
   }
 
-  .huss-breadcrumb__link:hover:is(a),
-  .huss-breadcrumb__link:focus:is(a) {
+  a:hover:is(a),
+  a:focus:is(a) {
     cursor: pointer;
   }
 
-  @media (min-width: 48rem) {
-    .huss-breadcrumb__link {
+  @media (width > 48rem) {
+    a {
       max-width: var(--linkMaxWidthDesktop);
     }
   }
@@ -47,7 +47,7 @@ export const breadcrumbsStyles = css`
     width: 9px;
   }
 
-  .huss-breadcrumb__list-item:first-child .huss-breadcrumb__link {
+  .huss-breadcrumb__list-item:first-child a {
     padding-inline-end: 8px;
   }
 
@@ -62,27 +62,31 @@ export const breadcrumbsStyles = css`
   .huss-breadcrumb__list-item:not(:first-child):not(:last-child):not(
       :nth-last-child(2)
     )
-    :where(.huss-breadcrumb__link) {
+    :where(a) {
     display: none;
   }
 
-  @media (min-width: 48rem) {
+  .huss-breadcrumb__list-item:not(:first-child):not(:last-child):not(
+      :nth-last-child(2)
+    ):not(:nth-last-child(3))::after {
+    display: none;
+  }
+
+  @media (width > 48rem) {
     .huss-breadcrumb__list-item:not(:first-child):not(:last-child):not(
         :nth-last-child(2)
       )
-      :where(.huss-breadcrumb__link) {
+      :where(a) {
       display: inline-block;
     }
   }
 
-  .huss-breadcrumb__list-item:nth-child(2):not(:last-child)
-    .huss-breadcrumb__link {
+  .huss-breadcrumb__list-item:nth-child(2):not(:last-child) a {
     display: none;
   }
 
-  @media (min-width: 48rem) {
-    .huss-breadcrumb__list-item:nth-child(2):not(:last-child)
-      .huss-breadcrumb__link {
+  @media (width > 48rem) {
+    .huss-breadcrumb__list-item:nth-child(2):not(:last-child) a {
       display: inline-block;
     }
   }
@@ -93,31 +97,17 @@ export const breadcrumbsStyles = css`
     padding-inline: 10px;
   }
 
-  @media (min-width: 48rem) {
+  @media (width > 48rem) {
     .huss-breadcrumb__list-item:nth-child(2):not(:last-child)::before {
       display: none;
     }
   }
 
-  .huss-breadcrumb__list-item:not(:first-child):not(:last-child):not(
-      :nth-last-child(2)
-    )
-    :where(.huss-breadcrumb__link) {
-    display: none;
-  }
-
-  .huss-breadcrumb__list-item:not(:first-child):not(:last-child):not(
-      :nth-last-child(2)
-    )
-    :after {
-    display: none;
-  }
-
-  @media (min-width: 48rem) {
+  @media (width > 48rem) {
     .huss-breadcrumb__list-item:not(:first-child):not(:last-child):not(
         :nth-last-child(2)
       )
-      :where(.huss-breadcrumb__link) {
+      :where(a) {
       display: inline-block;
     }
 
@@ -129,12 +119,12 @@ export const breadcrumbsStyles = css`
     }
   }
 
-  @media (min-width: 48rem) {
+  @media (width > 48rem) {
     .--is-folded
       .huss-breadcrumb__list-item:not(:first-child):not(:last-child):not(
         :nth-last-child(3)
       ):not(:nth-last-child(2))
-      :where(.huss-breadcrumb__link) {
+      :where(a) {
       display: none;
     }
 
@@ -145,22 +135,18 @@ export const breadcrumbsStyles = css`
       display: none;
     }
 
-    .--is-folded
-      .huss-breadcrumb__list-item:nth-child(2):not(:last-child)
-      .huss-breadcrumb__link {
+    .--is-folded .huss-breadcrumb__list-item:nth-child(2):not(:last-child) a {
       display: none;
     }
   }
 
-  @media (min-width: 48rem) and (min-width: 48rem) {
-    .--is-folded
-      .huss-breadcrumb__list-item:nth-child(2):not(:last-child)
-      .huss-breadcrumb__link {
+  @media (width > 48rem) {
+    .--is-folded .huss-breadcrumb__list-item:nth-child(2):not(:last-child) a {
       display: inline-block;
     }
   }
 
-  @media (min-width: 48rem) {
+  @media (width > 48rem) {
     .--is-folded
       .huss-breadcrumb__list-item:nth-child(2):not(:last-child)::before {
       content: '...';
