@@ -27,35 +27,26 @@ export class HussBreadcrumbs extends LitElement {
   @queryAssignedElements({slot: 'breadcrumbs', selector: 'a'})
   _breadcrumbs: Array<HTMLElement>;
 
-  @queryAssignedElements({slot: 'icon', selector: 'p'})
-  _icon: Array<HTMLElement>;
-  /**
-   * The name to say "Hello" to.
-   */
-  @state()
-  icon: any = null;
-
+  @property({type: Number})
+  collapseAfter: number;
   /**
    * The number of times the button has been clicked.
    */
   @property({type: Number})
   count = 0;
 
-  protected override firstUpdated(
-    _changedProperties: PropertyValueMap<any> | Map<PropertyKey, unknown>
-  ): void {
+  protected override firstUpdated(): void {
     if (this._breadcrumbs.length) {
       this.requestUpdate();
-    }
-    if (this._icon.length) {
-      this.icon = this._icon[0];
     }
   }
 
   override render() {
+    console.log(this.collapseAfter);
     return html`
       <ul
-        class="huss-breadcrumbs__list ${this._breadcrumbs.length > 5
+        class="huss-breadcrumbs__list ${this.collapseAfter !== undefined &&
+        this._breadcrumbs.length > this.collapseAfter
           ? '--is-folded'
           : ''}"
       >
