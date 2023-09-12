@@ -3,6 +3,8 @@ export const breadcrumbsStyles = css `
   :host {
     --linkMaxWidthMobile: 72px;
     --linkMaxWidthDesktop: 170px;
+    --separatorUnicode: '\\003E';
+    --separatorUnicodeColour: blue;
   }
 
   .huss-breadcrumbs__list {
@@ -42,7 +44,8 @@ export const breadcrumbsStyles = css `
   }
 
   .huss-breadcrumb__list-item:after {
-    content: '>';
+    content: var(--separatorUnicode);
+    color: var(--separatorUnicodeColour);
     width: 9px;
   }
 

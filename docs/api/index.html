@@ -33,7 +33,7 @@
      
        <h2>&lt;huss-breadcrumbs></h2>
        <div>
-         An example element.
+         Breadcrumbs which can collapse in the middle, leaving only first and several last crumbs visible.
        </div>
        
    <h3>Attributes</h3>
@@ -43,7 +43,11 @@
      </tr>
      
        <tr>
-         <td>count</td><td>The number of times the button has been clicked.</td><td>number</td><td>0</td>
+         <td>variant</td><td>An option telling the carousel that you are displaying either images or other components.</td><td>image | anyContent</td><td></td>
+       </tr>
+     
+       <tr>
+         <td>collapseAfter</td><td>An option telling the carousel that you are displaying either images or other components.</td><td>image | anyContent</td><td></td>
        </tr>
      
    </table>
@@ -60,33 +64,13 @@
        </tr>
      
        <tr>
-         <td>_icon</td><td></td><td></td><td>Array<HTMLElement></td><td></td>
-       </tr>
-     
-       <tr>
-         <td>icon</td><td></td><td>The name to say "Hello" to.</td><td>any</td><td>null</td>
-       </tr>
-     
-       <tr>
-         <td>count</td><td>count</td><td>The number of times the button has been clicked.</td><td>number</td><td>0</td>
+         <td>collapseAfter</td><td>collapseAfter</td><td>An option telling the carousel that you are displaying either images or other components.</td><td>image | anyContent</td><td></td>
        </tr>
      
    </table>
    
        
-       
-   <h3>Events</h3>
-   <table>
-     <tr>
-       <th>Name</th><th>Description</th>
-     </tr>
-     
-       <tr>
-         <td>count-changed</td><td>Indicates when the count changes</td>
-       </tr>
-     
-   </table>
-     
+           
        
    <h3>Slots</h3>
    <table>
@@ -95,25 +79,37 @@
      </tr>
      
        <tr>
-         <td>(default)</td><td>This element has a slot</td>
+         <td>breadcrumbs</td><td>Content to be displayed in as breadcrumbs. Expects links.</td>
        </tr>
      
    </table>
    
        
-   <h3>CSS Shadow Parts</h3>
+       
+   <h3>CSS Custom Properties</h3>
    <table>
      <tr>
        <th>Name</th><th>Description</th>
      </tr>
      
        <tr>
-         <td>button</td><td>The button</td>
+         <td>--linkMaxWidthMobile</td><td>Carousel height on small screens.</td>
+       </tr>
+     
+       <tr>
+         <td>--linkMaxWidthDesktop</td><td>Carousel height on medium screens.</td>
+       </tr>
+     
+       <tr>
+         <td>--separatorUnicode</td><td>Carousel height on large screens.</td>
+       </tr>
+     
+       <tr>
+         <td>--separatorUnicodeColour</td><td>Width of dots for carousel navigation.</td>
        </tr>
      
    </table>
  
-       
        
    
       </main>

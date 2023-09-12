@@ -13,19 +13,26 @@ import {
 import {breadcrumbsStyles} from './huss-breadcrumbs.styles';
 
 /**
- * An example element.
- *
- * @fires count-changed - Indicates when the count changes
- * @slot - This element has a slot
- * @csspart button - The button
+ * Breadcrumbs which can collapse in the middle, leaving only first and several last crumbs visible.
+ * @element huss-breadcrumbs
+ * @slot breadcrumbs - Content to be displayed in as breadcrumbs. Expects links.
+ * @cssprop --linkMaxWidthMobile - Carousel height on small screens.
+ * @cssprop --linkMaxWidthDesktop - Carousel height on medium screens.
+ * @cssprop --separatorUnicode - Carousel height on large screens.
+ * @cssprop --separatorUnicodeColour - Width of dots for carousel navigation.
  */
 @customElement('huss-breadcrumbs')
 export class HussBreadcrumbs extends LitElement {
   static override styles = [breadcrumbsStyles];
 
   @queryAssignedElements({slot: 'breadcrumbs', selector: 'a'})
-  _breadcrumbs: Array<HTMLElement>;
+  private _breadcrumbs: Array<HTMLElement>;
 
+  /**
+   * An option telling the carousel that you are displaying either images or other components.
+   * @type {image | anyContent}
+   * @attr variant
+   */
   @property({type: Number})
   collapseAfter: number;
 
