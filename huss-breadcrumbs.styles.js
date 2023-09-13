@@ -19,7 +19,7 @@ export const breadcrumbsStyles = css `
     --lastLinkFontColour: 800;
     --textDecoration: none;
   }
-  }
+  
 
   .huss-breadcrumbs__list {
     display: inline-flex;
@@ -49,7 +49,7 @@ export const breadcrumbsStyles = css `
     cursor: pointer;
     color: var(--hoverFontColour);
     font-weight: var(--hoverFontWeight);
-    text-decoration: var(--hoverTextDecoration)
+    text-decoration: var(--hoverTextDecoration);
   }
 
   @media (width > 48rem) {
