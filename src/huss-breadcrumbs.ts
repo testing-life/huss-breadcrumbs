@@ -16,10 +16,17 @@ import {breadcrumbsStyles} from './huss-breadcrumbs.styles';
  * Breadcrumbs which can collapse in the middle, leaving only first and several last crumbs visible.
  * @element huss-breadcrumbs
  * @slot breadcrumbs - Content to be displayed in as breadcrumbs. Expects links.
- * @cssprop --linkMaxWidthMobile - Carousel height on small screens.
- * @cssprop --linkMaxWidthDesktop - Carousel height on medium screens.
- * @cssprop --separatorUnicode - Carousel height on large screens.
- * @cssprop --separatorUnicodeColour - Width of dots for carousel navigation.
+ * @cssprop --linkMaxWidthMobile - How long should a bredcrumb be on small screens.
+ * @cssprop --linkMaxWidthDesktop - How long should a bredcrumb be on large screens.
+ * @cssprop --separatorUnicode - A symbol for separator. Expectes escaped unicode and default is \\003E (right chevron)
+ * @cssprop --font - Font family for all breadcrumbs.
+ * @cssprop --fontColour - Colour for all breadcrumbs.
+ * @cssprop --fontSize - Font size for all breadcrumbs.
+ * @cssprop --lastLinkFontColour - Colour of the last (current) link.
+ * @cssprop --lastLinkFontWeight - Weight for the separator.
+ * @cssprop --textDecoration - Text decoration for all links.
+ * @cssprop --hoverFontColour - Text colour for hover state. Last link does not have a hover state.
+ * @cssprop --hoverFontWeight - Font weight for hover state. Last link does not have a hover state.
  */
 @customElement('huss-breadcrumbs')
 export class HussBreadcrumbs extends LitElement {
@@ -29,9 +36,9 @@ export class HussBreadcrumbs extends LitElement {
   private _breadcrumbs: Array<HTMLElement>;
 
   /**
-   * An option telling the carousel that you are displaying either images or other components.
-   * @type {image | anyContent}
-   * @attr variant
+   * After how many elements should the list collapse, keeping only the first and last three elements (on large screen).
+   * @type {number}
+   * @attr collapseAfter
    */
   @property({type: Number})
   collapseAfter: number;
