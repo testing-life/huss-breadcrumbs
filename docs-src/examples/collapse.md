@@ -1,12 +1,12 @@
 ---
 layout: example.11ty.cjs
-title: <huss-breadcrumbs> ⌲ Examples ⌲ Basic
+title: <huss-breadcrumbs> ⌲ Examples ⌲ Collapsing list
 tags: example
-name: Basic
-description: A basic example
+name: Collapsing List
+description: Collapsing List
 ---
 
-  <huss-breadcrumbs>
+  <huss-breadcrumbs collapseAfter='3'>
     <a slot="breadcrumbs" title="this page"  href="">1This is child content</a>
     <a slot="breadcrumbs" title="this page2"  href=""
       >2This is child content</a
@@ -39,11 +39,11 @@ description: A basic example
       >11This is child content last</a
     >
   </huss-breadcrumbs>
-  
+
 <h3>HTML</h3>
 
 ```html
-<huss-breadcrumbs>
+<huss-breadcrumbs collapseAfter="3">
   <a slot="breadcrumbs" title="this page" href="">1This is child content</a>
   <a slot="breadcrumbs" title="this page2" href="">2This is child content</a>
   <a slot="breadcrumbs" title="this page3" href="">3This is child content</a>

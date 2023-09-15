@@ -71,6 +71,7 @@ export const breadcrumbsStyles = css`
 
   .huss-breadcrumb__list-item:first-child a {
     padding-inline-end: 8px;
+    padding-inline-start: 0;
   }
 
   .huss-breadcrumb__list-item:last-child {
@@ -110,7 +111,6 @@ export const breadcrumbsStyles = css`
         :nth-last-child(2)
       )
       a {
-      outline: 1px solid red;
       display: inline-block;
     }
 

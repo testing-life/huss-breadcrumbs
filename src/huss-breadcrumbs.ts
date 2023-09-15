@@ -50,7 +50,6 @@ export class HussBreadcrumbs extends LitElement {
   }
 
   override render() {
-    console.log(this.collapseAfter);
     return html`
       <ul
         class="huss-breadcrumbs__list ${this.collapseAfter !== undefined &&
