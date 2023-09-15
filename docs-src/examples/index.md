@@ -9,7 +9,7 @@ description: A basic example
 <h3>HTML</h3>
 
 ```html
-<huss-breadcrumbs collapseAfter="3">
+<huss-breadcrumbs>
   <a slot="breadcrumbs" title="this page" href="">1This is child content</a>
   <a slot="breadcrumbs" title="this page2" href="">2This is child content</a>
   <a slot="breadcrumbs" title="this page3" href="">3This is child content</a>
@@ -39,7 +39,7 @@ description: A basic example
     font-size: 12px;
   }
 </style>
-  <huss-breadcrumbs collapseAfter="3">
+  <huss-breadcrumbs>
     <a slot="breadcrumbs" title="this page" class='crumb' href="">1This is child content</a>
     <a slot="breadcrumbs" title="this page2" class='crumb' href=""
       >2This is child content</a
