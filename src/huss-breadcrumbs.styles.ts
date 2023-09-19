@@ -4,20 +4,18 @@ export const breadcrumbsStyles = css`
   :host {
     --linkMaxWidthMobile: 72px;
     --linkMaxWidthDesktop: 170px;
-    --separatorUnicode: '\\003E';
-    --separatorUnicodeColour: blue;
+    --separatorUnicode: '\\27A1';
+    --separatorUnicodeColour: #202a2f;
     --font: Arial;
-    --fontColour: blue;
-    --fontSize: 12px;
-    --lastLinkFontColour: purple;
+    --fontColour: #688897;
     --lastLinkFontWeight: 800;
     --textDecoration: none;
-    --hoverFontColour: green;
+    --hoverFontColour: #977768;
     --hoverFontWeight: 500;
     --hoverTextDecoration: underline;
     --fontSize: 14px;
-    --lastLinkFontColour: purple;
-    --lastLinkFontColour: 800;
+    --lastLinkFontColour: #93b649;
+    --lastLinkFontWeight: 800;
     --textDecoration: none;
   }
 
@@ -29,12 +27,12 @@ export const breadcrumbsStyles = css`
     font-size: var(--text-small);
     padding: 0;
     margin: 0;
-    color: var(--fontColour);
     font-family: var(--font);
     font-size: var(--fontSize);
   }
-
+  
   a {
+    color: var(--fontColour);
     text-decoration: var(--textDecoration);
     padding-inline: 8px;
     display: inline-block;
@@ -76,7 +74,7 @@ export const breadcrumbsStyles = css`
 
   .huss-breadcrumb__list-item:last-child {
     color: var(--lastLinkFontColour);
-    font-weight: var(--lastLinkFontColour);
+    font-weight: var(--lastLinkFontWeight);
   }
 
   .huss-breadcrumb__list-item:last-child:after {

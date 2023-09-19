@@ -18,7 +18,7 @@ import {breadcrumbsStyles} from './huss-breadcrumbs.styles';
  * @slot breadcrumbs - Content to be displayed in as breadcrumbs. Expects links.
  * @cssprop --linkMaxWidthMobile - How long should a bredcrumb be on small screens.
  * @cssprop --linkMaxWidthDesktop - How long should a bredcrumb be on large screens.
- * @cssprop --separatorUnicode - A symbol for separator. Expectes escaped unicode and default is \\003E (right chevron)
+ * @cssprop --separatorUnicode - A symbol for separator. Expectes escaped unicode and default is \27A1 (right arrow)
  * @cssprop --font - Font family for all breadcrumbs.
  * @cssprop --fontColour - Colour for all breadcrumbs.
  * @cssprop --fontSize - Font size for all breadcrumbs.
