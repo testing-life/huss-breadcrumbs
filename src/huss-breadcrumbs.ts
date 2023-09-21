@@ -4,65 +4,77 @@
  * SPDX-License-Identifier: BSD-3-Clause
  */
 
-import {LitElement, html, css} from 'lit';
-import {customElement, property} from 'lit/decorators.js';
+import {LitElement, html} from 'lit';
+import {
+  customElement,
+  property,
+  queryAssignedElements,
+} from 'lit/decorators.js';
+import {breadcrumbsStyles} from './huss-breadcrumbs.styles';
 
 /**
- * An example element.
- *
- * @fires count-changed - Indicates when the count changes
- * @slot - This element has a slot
- * @csspart button - The button
+ * Breadcrumbs which can collapse in the middle, leaving only first and several last crumbs visible.
+ * @element huss-breadcrumbs
+ * @slot breadcrumbs - Content to be displayed in as breadcrumbs. Expects links.
+ * @cssprop --linkMaxWidthMobile - How long should a bredcrumb be on small screens.
+ * @cssprop --linkMaxWidthDesktop - How long should a bredcrumb be on large screens.
+ * @cssprop --separatorUnicode - A symbol for separator. Expectes escaped unicode and default is \27A1 (right arrow)
+ * @cssprop --font - Font family for all breadcrumbs.
+ * @cssprop --fontColour - Colour for all breadcrumbs.
+ * @cssprop --fontSize - Font size for all breadcrumbs.
+ * @cssprop --lastLinkFontColour - Colour of the last (current) link.
+ * @cssprop --lastLinkFontWeight - Weight for the separator.
+ * @cssprop --textDecoration - Text decoration for all links.
+ * @cssprop --hoverFontColour - Text colour for hover state. Last link does not have a hover state.
+ * @cssprop --hoverFontWeight - Font weight for hover state. Last link does not have a hover state.
  */
 @customElement('huss-breadcrumbs')
-export class MyElement extends LitElement {
-  static override styles = css`
-    :host {
-      display: block;
-      border: solid 1px gray;
-      padding: 16px;
-      max-width: 800px;
-    }
-  `;
+export class HussBreadcrumbs extends LitElement {
+  static override styles = [breadcrumbsStyles];
+
+  @queryAssignedElements({slot: 'breadcrumbs', selector: 'a'})
+  private _breadcrumbs: Array<HTMLElement>;
 
   /**
-   * The name to say "Hello" to.
-   */
-  @property()
-  name = 'World';
-
-  /**
-   * The number of times the button has been clicked.
+   * After how many elements should the list collapse, keeping only the first and last three elements (on large screen).
+   * @type {number}
+   * @attr collapseAfter
    */
   @property({type: Number})
-  count = 0;
+  collapseAfter: number;
+
+  protected override firstUpdated(): void {
+    if (this._breadcrumbs.length) {
+      this.requestUpdate();
+    }
+  }
 
   override render() {
     return html`
-      <h1>${this.sayHello(this.name)}!</h1>
-      <button @click=${this._onClick} part="button">
-        Click Count: ${this.count}
-      </button>
-      <slot></slot>
+      <ul
+        class="huss-breadcrumbs__list ${this.collapseAfter !== undefined &&
+        this._breadcrumbs.length > this.collapseAfter
+          ? '--is-folded'
+          : ''}"
+      >
+        ${this._breadcrumbs.map(
+          (breadcrumb: HTMLElement, index: number) =>
+            html`<li
+              class="huss-breadcrumb__list-item ${this._breadcrumbs.length ===
+              index + 1
+                ? '--is-disabled'
+                : null}"
+            >
+              ${breadcrumb}
+            </li>`
+        )}
+      </ul>
+      <slot name="breadcrumbs"></slot>
     `;
   }
-
-  private _onClick() {
-    this.count++;
-    this.dispatchEvent(new CustomEvent('count-changed'));
-  }
-
-  /**
-   * Formats a greeting
-   * @param name The name to say "Hello" to
-   */
-  sayHello(name: string): string {
-    return `Hello, ${name}`;
-  }
 }
-
 declare global {
   interface HTMLElementTagNameMap {
-    'huss-breadcrumbs': MyElement;
+    'huss-breadcrumbs': HussBreadcrumbs;
   }
 }
