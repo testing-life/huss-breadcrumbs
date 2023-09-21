@@ -10,7 +10,7 @@ title: <huss-breadcrumbs> ⌲ Install
 ## Local Installation
 
 ```bash
-npm i huss-breadcrumbs
+npm i @m-hussariush/huss-breadcrumbs
 ```
 
 ## CDN
@@ -22,11 +22,15 @@ For this element to work from unpkg.com specifically, you need to include the `?
 ### HTML
 
 ```html
-<script type="module" src="https://unpkg.com/huss-breadcrumbs?module"></script>
+<script
+  type="module"
+  src="https://unpkg.com/@m-hussariush/huss-breadcrumbs@latest/huss-breadcrumbs.js?module"
+></script>
 ```
 
 ### JavaScript
 
 ```html
-import {HussBreadcrumbs} from 'https://unpkg.com/huss-breadcrumbs?module';
+import {HussBreadcrumbs} from
+'https://unpkg.com/@m-hussariush/huss-breadcrumbs@latest/huss-breadcrumbs.js?module';
 ```
