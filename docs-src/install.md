@@ -24,7 +24,7 @@ For this element to work from unpkg.com specifically, you need to include the `?
 ```html
 <script
   type="module"
-  src="https://unpkg.com/@m-hussariush/huss-breadcrumbs@0.0.2/huss-breadcrumbs.js?module"
+  src="https://unpkg.com/@m-hussariush/huss-breadcrumbs@latest/huss-breadcrumbs.js?module"
 ></script>
 ```
 
@@ -32,5 +32,5 @@ For this element to work from unpkg.com specifically, you need to include the `?
 
 ```html
 import {HussBreadcrumbs} from
-'https://unpkg.com/@m-hussariush/huss-breadcrumbs@0.0.2/huss-breadcrumbs.js?module';
+'https://unpkg.com/@m-hussariush/huss-breadcrumbs@latest/huss-breadcrumbs.js?module';
 ```
