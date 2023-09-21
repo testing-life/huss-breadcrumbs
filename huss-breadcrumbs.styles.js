@@ -15,7 +15,6 @@ export const breadcrumbsStyles = css `
     --fontSize: 14px;
     --lastLinkFontColour: #93b649;
     --lastLinkFontWeight: 800;
-    --textDecoration: none;
   }
 
   .huss-breadcrumbs__list {
@@ -29,7 +28,7 @@ export const breadcrumbsStyles = css `
     font-family: var(--font);
     font-size: var(--fontSize);
   }
-  
+
   a {
     color: var(--fontColour);
     text-decoration: var(--textDecoration);
